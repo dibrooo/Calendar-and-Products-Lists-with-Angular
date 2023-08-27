@@ -1,0 +1,55 @@
+<!--
+    Placeholder For Alert Box
+-->
+<ng-template appPlaceholder></ng-template>
+
+
+
+<!--
+    ============
+     LOGIN PAGE
+    ============
+-->
+<div class="row" style="margin-top: 30px;">
+    <div class="col-xs-12 col-md-6 col-md-offset-3">
+        <!--
+            ============
+             Login Form
+            ===========
+        -->
+        <form *ngIf="!isLoading" #authForm="ngForm">
+            <div class="form-group">
+                <input type="text" name="email" placeholder="Email" class="form-control" ngModel #email="ngModel" required email >
+                <div *ngIf="email.touched && !email.valid" class="alert alert-danger">Email invalid!</div>
+            </div>
+
+            <div class="form-group">
+                <input type="password" name="password" placeholder="Password" class="form-control" ngModel #pass="ngModel" required minlength="5">
+                <div *ngIf="pass.touched && !pass.valid" class="alert alert-danger">Password invalid!</div>
+            </div>
+
+            
+            <div style="margin-left: 42%; margin-top: 50px;">
+                <input type="checkbox" name="remember" ngModel> Remember me
+            </div>
+
+            <div style="margin-left: 35%;">
+                <button type="submit" class="btn btn-success" style="width: 50%;"  [disabled]="!authForm.valid" (click)="onSubmit(authForm, 'Sign Up')">Sign Up</button>
+                <br style="margin-block: 15px;">
+                <button type="submit" class="btn btn-primary" style="width: 50%;"  [disabled]="!authForm.valid" (click)="onSubmit(authForm, 'Login')">Login</button>
+            </div>
+
+        </form>
+
+
+
+        <!--
+            =================
+             Loading Spinner
+            =================
+        -->
+        <div *ngIf="isLoading" style="text-align: center; margin-top: 50px;">
+            <app-loading-spinner></app-loading-spinner>
+        </div>
+    </div>
+</div>

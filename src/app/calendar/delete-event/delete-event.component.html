@@ -1,0 +1,33 @@
+<!--
+    ==================
+     DELETE EVENT BOX
+    ==================
+-->
+<div class="event-card">
+    <!--
+        Header
+    -->
+    <div class="header">
+        <h2>Delete event</h2>
+        <span class="close" (click)="close()">X</span>
+    </div>
+
+    <!--
+        Instructions Span
+    -->
+    <div class="instructions">
+        <span>- Click on the event to delete -</span>
+    </div>
+
+    <!--
+        Event List
+    -->
+    <div class="content">
+        <div class="event-list">
+            <div *ngFor="let event of events; let i = index" class="event-item" [ngStyle]="{'background-color': event.color, 'color': getColorContrast(event.color)}" (click)="deleteEvent(i)">
+                <h4>{{ event.title }}</h4>
+                <i class="fa-solid fa-delete-left" [ngStyle]="{'color': event.color}"></i>
+            </div>
+        </div>
+    </div>
+</div>

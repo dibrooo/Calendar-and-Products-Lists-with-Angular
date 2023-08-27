@@ -1,0 +1,38 @@
+<!--
+    ==================
+     CHANGE EVENT BOX
+    ==================
+-->
+<div class="event-card">
+    <!--
+        Header
+    -->
+    <div class="header">
+        <h2>Change date</h2>
+        <span class="close" (click)="close()">X</span>
+    </div>
+
+    <!--
+        Content
+    -->
+    <div class="content">
+        <!--
+            Events List
+        -->
+        <div class="event-list">
+            <div *ngFor="let event of events; let i = index" class="event-item" [ngStyle]="{'background-color': event.color, 'color': getColorContrast(event.color)}" (click)="deleteEvent(i)">
+                <h4>{{ event.title }}</h4>
+            </div>
+        </div>
+
+        <!--
+            Date Inputs
+        -->
+        <div class="new-date-list">
+            <div *ngFor="let event of events; let i = index" class="new-date">
+                <input type="date" name="date" [value]="event.date" required #date>
+                <i class="fa-solid fa-check" (click)="changeDate(date, i)"></i>
+            </div>  
+        </div>
+    </div>
+</div>

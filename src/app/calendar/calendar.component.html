@@ -1,0 +1,116 @@
+<!--
+    ======
+     LOCK
+    ======
+-->
+<div *ngIf="!isAuthenticated" class="lock">
+    <img src="../../assets/lock.png" alt="locked" class="image-responsive">
+    <h3>Please Sign In to have access to the calendar!</h3>
+</div>
+
+
+
+<!--
+    ==========
+     CALENDAR
+    ==========
+-->
+<div *ngIf="isAuthenticated">
+    <div class="calendar">
+        <!--
+            ========
+             Header
+            ========
+        -->
+        <div class="calendar-header">
+            <div class="left-head">
+                <h1>>| {{ months[month] }} <span class="year">{{ year }}</span></h1>
+            </div>
+
+            <div class="calendar-changer">
+                <button (click)="prevMonth()"><i class="fa-solid fa-chevron-left"></i></button>
+                <span>Change month</span>
+                <button (click)="nextMonth()"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+
+            <div class="current-day">
+                <h3>{{ dateHTML }}</h3>
+            </div>
+        </div>
+
+        <!--
+            ======
+             Days
+            ======
+        -->
+        <div class="calendar-container">
+            <div class="weekdays">
+                <div *ngFor="let weekday of weekdays">{{ weekday }}</div>
+            </div>
+    
+            <div class="days-container">
+                <div *ngFor="let prevDay of prevDaysCounter()" class="days prev-days">
+                    <div class="day-number">{{ prevDay }}</div>
+                </div>
+
+                <div *ngFor="let day of daysCounter(); let i = index" class="days" style="overflow: auto; scrollbar-width: none;">
+                    <!--
+                        Add Event Button
+                    -->
+                    <div class="event-short" (click)="addEventShort(year + '-' + ((month + 1) >= 10 ? (month + 1) : '0' + (month + 1)) + '-' + ((i + 1) >= 10 ? (i + 1) : '0' + (i + 1)))">
+                        <button>+</button>
+                    </div>
+
+                    <!--
+                        Event Box
+                    -->
+                    <ng-container *ngFor="let event of events; let j = index">
+                        <div *ngIf="(year + '-' + ((month + 1) >= 10 ? (month + 1) : '0' + (month + 1)) + '-' + ((i + 1) >= 10 ? (i + 1) : '0' + (i + 1))) === event.date" style="margin-top: 10px;">
+                            <div class="event-box" [ngStyle]="{'background-color': event.color}" (click)="openDetails(j)">
+                                <div class="event-box-content" [style]="{'color': this.colorContrastService.getColorContrast(event.color)}">
+                                    <h5>{{ event.title }}</h5>
+                                    <div class="event-expand">
+                                        <p>> {{ event.tag }}</p>
+                                        <p>{{ event.time }}h</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-container>
+
+                    <!--
+                        Day Number
+                    -->
+                    <div class="day-number" [ngClass]="{today: (i + 1 === currentDay) && (month === currentMonth) && (year === currentYear) }">
+                        {{ i + 1 }}
+                    </div>
+                </div>
+
+                <div *ngFor="let nextDay of nextDaysCounter()" class="days next-days">
+                    <div class="day-number">{{ nextDay }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!--
+        ================
+         Event Controls
+        ================
+    -->
+    <div class="event-controls">
+        <div class="add-event">
+            <button (click)="addCalendarComponent('add-event')"><i class="fa-regular fa-plus"></i> Add Event</button>
+        </div>
+    
+        <div class="delete-event">
+            <button (click)="addCalendarComponent('delete-event')"><i class="fa-solid fa-trash-can"></i></button>
+        </div>
+
+        <div class="change-event">
+            <button (click)="addCalendarComponent('change-event')">Change <i class="fa-sharp fa-solid fa-pen"></i></button>
+        </div>
+    </div>
+</div>

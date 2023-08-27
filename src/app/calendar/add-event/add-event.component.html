@@ -1,0 +1,80 @@
+<!--
+    ===============
+     ADD EVENT BOX
+    ===============
+-->
+<div class="event-card">
+    <!--
+        Header
+    -->
+    <div class="header">
+        <h2>New event</h2>
+        <span class="close" (click)="close()">X</span>
+    </div>
+
+    <!--
+        ============
+         Event Form
+        ============
+    -->
+    <form [formGroup]="eventForm" (ngSubmit)="onSubmit()">
+        <div class="form-content">
+            <!--
+                Title And Description Input
+            -->
+            <div class="form-group">
+                <input type="text" id="title" placeholder="Title" class="form-control event-input" formControlName="title" autocomplete="off">
+                <textarea id="description" name="description" rows="2" placeholder="Description (optional)" class="form-control event-input" formControlName="description"></textarea>
+            </div>
+
+            <!--
+                Tag Selection
+            -->
+            <div class="form-group tag-group">
+                <i class="fa-solid fa-tag"></i>
+                <select id="tag" name="tag" class="form-control event-input tag-input" formControlName="tag">
+                    <option *ngFor="let tag of tags" (click)="currentTag = tag">{{ tag }}</option>
+                </select>
+                <input type="color" id="color" name="color" class="form-control event-input" formControlName="color">
+            </div>
+
+            <!--
+                Delete And Create Tags
+            -->
+            <div class="form-group new-tag-group">
+                <div class="delete-tag" (click)="deleteTag()">
+                    <i class="fa-solid fa-trash"></i>
+                </div>
+                <form (ngSubmit)="addNewTag($event)">
+                    <button>
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
+                    <input type="text" id="newTag" name="newTag" placeholder="Add new tag" class="form-control event-input" autocomplete="off">
+                </form>
+            </div>
+
+            <!--
+                Date And Time Input
+            -->
+            <div class="form-group date-hour-group">
+                <div class="date-group">
+                    <i class="fa-solid fa-calendar"></i>
+                    <input type="date" id="date" class="form-control event-input" formControlName="date">
+                </div>
+
+                <div class="hour-group">
+                    <i class="fa-solid fa-clock"></i>
+                    <input type="time" id="time" class="form-control event-input" formControlName="time">
+                </div>
+            </div>
+        </div>
+
+
+        <!--
+            Submit Button
+        -->
+        <div class="form-footer">
+            <button type="submit" [disabled]="!eventForm.valid">Finish</button>
+        </div>
+    </form>
+</div>

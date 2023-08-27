@@ -1,0 +1,183 @@
+.event-card {
+    padding: 0;
+    margin: 0;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 75px;
+    background-color: lightgreen;
+}
+
+.header h2 {
+    margin: 0;
+}
+
+.close {
+    position: absolute;
+    margin-left: 345px;
+    margin-top: -15px;
+    font-size: 30px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-shadow: none;
+}
+
+form {
+    padding: 25px;
+}
+
+.event-input {
+    font-size: 20px;
+    outline: none;
+    box-shadow: none;
+    border: none;
+    border-radius: 0;
+    border-bottom: 3px solid lightgreen;
+    cursor: pointer;
+}
+
+.event-input[type="text"] {
+    cursor: text;
+}
+
+.event-input:focus {
+    border-bottom: 3px solid lightgreen;
+    box-shadow: 3px 3px rgb(130, 216, 130);
+}
+
+.form-content {
+    width: 100%;
+    height: 400px;
+}
+
+.form-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 75px;
+}
+
+.form-footer button {
+    margin-top: 20px;
+    padding: 5px 10px;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    background: none;
+    border: none;
+    transition: 0.1s;
+}
+
+.form-footer button:hover {
+    background-color: lightgreen;
+    color: white;
+    border-radius: 7px;
+}
+
+.form-footer button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.form-group {
+    padding: 5px 0;
+}
+
+.form-group textarea {
+    margin-top: 10px;
+    resize: none;
+    cursor: text;
+}
+
+.tag-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 30px;
+    gap: 10px;
+}
+
+.tag-group input {
+    width: 50px;
+}
+
+i {
+    text-align: center;
+    width: 25px;
+    height: 25px;
+    padding: 0.5px;
+    font-size: 25px;
+    color: grey;
+}
+
+.tag-input {
+    padding: 0 12px;
+}
+
+.new-tag-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.new-tag-group form {
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    width: 100%;
+    gap: 9px;
+}
+
+.new-tag-group button {
+    margin: 0;
+    padding: 0;
+    width: 25px;
+    height: 25px;
+    border: none;
+    outline: none;
+    background: none;
+    opacity: none;
+}
+
+.delete-tag {
+    cursor: pointer;
+}
+
+.delete-tag:hover:before {
+    content: 'Delete selected tag';
+    position: absolute;
+    width: 150px;
+    padding: 5px 10px;
+    transform: translate(-60px, 30px);
+    text-align: center;
+    color: white;
+    background-color: gray;
+    border-radius: 10px;
+}
+
+.date-hour-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.date-hour-group i {
+    margin-right: 10px;
+}
+
+.date-group,
+.hour-group {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+}
+
+.date-group input,
+.hour-group input {
+    padding: 0;
+    text-align: center;
+}

@@ -1,0 +1,33 @@
+<!--
+    ===================
+     EVENT DETAILS BOX
+    ===================
+-->
+<div class="container" [ngStyle]="{'background-color': event.color, 'color': textColor}">
+    <!--
+        Header
+    -->
+    <div class="header">
+        <h3 class="title">{{ event.title }}</h3>
+        <h5 class="subtitle">{{ event.date }} <b>|</b> {{ event.time }}h</h5>
+    </div>
+
+    <!--
+        Description
+    -->
+    <div class="description">
+        <div *ngIf="event.description">
+            <p>{{ event.description }}</p>
+        </div>
+        <div *ngIf="!event.description">
+            <p style="opacity: 0.5;">There is no description!</p>
+        </div>
+    </div>
+
+    <!--
+        Tag
+    -->
+    <div class="tag">
+        <i class="fa-solid fa-tag"></i><span>{{ event.tag }}</span>
+    </div>
+</div>

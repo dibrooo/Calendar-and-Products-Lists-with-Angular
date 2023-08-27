@@ -1,0 +1,65 @@
+.event-card {
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 75px;
+    background-color: lightcoral;
+}
+
+.header h2 {
+    margin: 0;
+}
+
+.close {
+    position: absolute;
+    margin-left: 345px;
+    margin-top: -15px;
+    font-size: 30px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-shadow: none;
+}
+
+.content {
+    padding: 10px 25px;
+}
+
+.event-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 10px;
+    margin: 10px;
+    width: 95%;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}
+
+.event-item i {
+    font-size: 30px;
+    transform: translateX(225%);
+}
+
+.event-item:hover {
+    width: 80%;
+}
+
+.event-item:hover i {
+    display: inline;
+    transform: translateX(150%);
+}
+
+.instructions {
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
+    opacity: 0.6;
+    margin-top: 10px;
+}

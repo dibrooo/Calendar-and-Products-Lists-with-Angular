@@ -1,0 +1,85 @@
+<!--
+    =====================
+     PRODUCT DETAILS BOX
+    =====================
+-->
+<div *ngIf="!editMode" class="container">
+    
+    <div class="top-data">
+        <h2 class="title">{{ product.name }}</h2>
+    </div>
+
+    <div class="bottom-data">
+        <div class="left-data" style="pointer-events: none;">
+            <img [src]="product.imagePath">
+        </div>
+    
+        <div class="right-data">
+            <p class="description">{{ product.description }}</p>
+
+            <div class="right-bottom-data">
+                <p class="price">{{ product.price }} €</p>
+                <button (click)="closeDetails()">Ok</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+<!--
+    ===========
+     EDIT MODE
+    ===========
+-->
+<div *ngIf="editMode" class="container">
+    <!--
+        ===========
+         Edit Form
+        ===========
+    -->
+    <form [formGroup]="editForm" (ngSubmit)="saveEdit()">
+        <!--
+            Change Title
+        -->
+        <div class="top-data form-group">
+            <input type="text" id="name" [value]="product.name" class="title form-control" style="margin-bottom: -10px;" formControlName="name">
+        </div>
+        
+        <!--
+            Change Description And Price
+        -->
+        <div class="bottom-data">
+            <div class="left-data  form-group" (click)="changeImage = !changeImage">
+                <img [src]="product.imagePath">
+                <div class="middle">
+                    <div class="imageHover">Click here to change image URL</div>
+                </div>
+            </div>
+        
+            <div class="right-data form-group">
+                <input type="text" id="description" [value]="product.description" class="description form-control" formControlName="description">
+        
+                <div class="right-bottom-data form-group">
+                    <input type="text" id="price" [value]="product.price" class="price form-control" formControlName="price">
+    
+                    <!--
+                        Edit Form Controls
+                    -->
+                    <div class="buttons">
+                        <button type="submit" [ngStyle]="{ 'opacity': editForm.valid ? '1' : '0.5'}" [disabled]="!editForm.valid">Save</button>
+                        <button type="button" (click)="closeDetails()">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--
+            Change ImageURL Box
+        -->
+        <div class="imageUrl-data" *ngIf="changeImage">
+            <input type="text" id="imagePath" [value]="product.imagePath" class="formControl" formControlName="imagePath">
+        </div>
+    </form>
+</div>
